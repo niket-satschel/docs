@@ -1,0 +1,33 @@
+---
+title: 'Request Documents'
+openapi: 'POST /request-documents'
+---
+
+Initiate a document request for a specific loan. This endpoint signals the system to request required documentation from the borrower or relevant parties based on the `loanId`.
+
+Make sure the loan ID provided is valid and refers to an existing loan in the system.
+
+## Request Body
+
+- `loanId` (string, required): The unique identifier of the loan for which documents are being requested.
+
+## Example
+
+```bash
+curl -X POST https://your-api.com/request-documents \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+  }'
+  ```
+
+## Response
+
+- Returns a success status if the document request has been accepted.
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
+```

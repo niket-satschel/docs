@@ -1,0 +1,33 @@
+---
+title: 'Verify Documents'
+openapi: 'POST /verify-documents'
+---
+
+Verify the submitted documents for a given loan. This endpoint is typically called by the servicer or verifier to confirm that all required documentation has been received and validated.
+
+## Request Body
+
+The request must include:
+
+- `loanId`: The unique identifier of the loan whose documents are being verified.
+
+## Example Request
+
+```bash
+curl -X POST https://your-api.com/verify-documents \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+  }'
+```
+
+## Response
+
+- Returns a success confirmation with the blockchain transaction hash.
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
+```

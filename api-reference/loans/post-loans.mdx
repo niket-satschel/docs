@@ -1,0 +1,70 @@
+---
+title: 'Create Loan'
+openapi: 'POST /loans'
+---
+
+This endpoint creates a new loan between a borrower and a lender. Use it to initiate the lending lifecycle, including borrower profile, loan amount, and repayment configuration.
+
+**What it does:**
+- Registers a new loan in the system
+- Accepts borrower, lender, servicer, and loan-specific details
+- Generates a unique loan ID and blockchain transaction hash
+
+**When to use it:**
+- When setting up a new loan agreement
+- After underwriting approval and before requesting collateral
+- To capture borrower identity and financial metadata
+
+## Request Body
+
+The request body should include loan and borrower details in the following format:
+
+```json
+{
+  "borrower_id": "u123",
+  "lender_id": "u456",
+  "primary_servicer_id": "s001",
+  "secondary_servicer_id": "s002",
+  "loan_type": "AUTO",
+  "principal_amount": 500000,
+  "loan_amount": 520000,
+  "collateral_type": "PROPERTY",
+  "terms_length": 360,
+  "encumbered_status": "UNENCUMBERED",
+  "interest_rate": 8.5,
+  "term": 120,
+  "payment_frequency": "MONTHLY",
+  "installment": 12,
+  "details": {
+    "name": "Alice Johnson",
+    "dob": "1990-05-15",
+    "mobile": 9876543210,
+    "govtId": "ABC1234567",
+    "address": "123 Main Street, Springfield",
+    "employmentStatus": "employed",
+    "grade": "A",
+    "subgrade": "A1",
+    "employeeTitle": "Software Engineer",
+    "employmentLength": 5,
+    "homeOwnership": "OWN",
+    "annualIncrement": 75000
+  }
+}
+  ```
+
+## Response
+
+- The API returns the transaction hash and generated loan ID upon success:
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+  "loanId": "0xe8767b8fe19bd639e80505bf399e7df57b56c7ecd1f69d5e5499b436ece087ed"
+}
+```
+
+**Important fields:**
+- `installment`: Total number of expected repayments (e.g., 12 for monthly repayments over a year)
+- `encumbered_status`: Indicates whether the collateral is locked during the loan
+- `payment_frequency`: Common values are MONTHLY, WEEKLY, or ONE_TIME
+- `loan_type`: Business logic-defined categories (e.g., AUTO, PERSONAL, EDUCATION)

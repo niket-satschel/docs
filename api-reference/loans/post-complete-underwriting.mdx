@@ -1,0 +1,36 @@
+---
+title: 'Complete Underwriting'
+openapi: 'POST /complete-underwriting'
+---
+
+Marks the underwriting process as complete for a loan.  
+This endpoint is used after internal risk assessment has been finished. It finalizes the underwriting decision and records whether the loan is approved or rejected.
+
+## Request Body
+
+The request must include:
+
+- `loanId`: The unique identifier of the loan.
+- `approved`: A boolean value (`true` or `false`) indicating the underwriting decision.
+
+## Example Request
+
+```bash
+curl -X POST https://your-api.com/complete-underwriting \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+    "approved": true
+  }'
+```
+
+## Response
+
+- Returns a success confirmation with the blockchain transaction hash.
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
+```

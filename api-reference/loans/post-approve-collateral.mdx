@@ -1,0 +1,36 @@
+---
+title: 'Approve Collateral'
+openapi: 'POST /approve-collateral'
+---
+
+Approves and records the collateral provided by the borrower for the specified loan.  
+This endpoint is called once the borrower has deposited the required collateral. The platform verifies and confirms the amount on-chain.
+
+## Request Body
+
+The request must include:
+
+- `loanId`: The unique identifier of the loan for which collateral is being approved.
+- `collateralAmount`: The amount of collateral.
+
+## Example Request
+
+```bash
+curl -X POST https://your-api.com/approve-collateral \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+    "collateralAmount": 1000
+  }'
+```
+
+## Response
+
+- Returns a success confirmation with the blockchain transaction hash.
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
+```

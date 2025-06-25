@@ -1,0 +1,38 @@
+---
+title: 'Loan Repay'
+openapi: 'POST /loan-repay'
+---
+
+Submits a repayment transaction against an active loan.  
+This endpoint is called by the borrower (or a repayment agent) to repay a part of the loan as per the agreed installment schedule.
+
+## Request Body
+
+The request must include:
+
+- `loanId`: The unique identifier of the loan being repaid.
+- `amount`: The repayment amount (in smallest unit, e.g. wei).
+- `refId`: A client-defined reference ID for the repayment transaction (used for audit and reconciliation).
+
+## Example Request
+
+```bash
+curl -X POST https://your-api.com/loan-repay \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+    "amount": 10,
+    "refId": "ref123"
+  }'
+```
+
+## Response
+
+- Returns a success confirmation with the blockchain transaction hash.
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
+```
