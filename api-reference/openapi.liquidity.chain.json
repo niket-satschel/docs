@@ -6,13 +6,24 @@
   },
   "servers": [
     {
-      "url": "http://api.stage.satschel.com/v2/chain"
+      "url": "https://api.stage.satschel.com/v2/chain"
     }
   ],
   "paths": {
     "/loans": {
       "post": {
         "summary": "loans",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key for authentication"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -506,97 +517,111 @@
       "LoanRequest": {
         "type": "object",
         "properties": {
-          "borrower_id": {
-            "type": "string"
-          },
-          "lender_id": {
-            "type": "string"
-          },
-          "primary_servicer_id": {
-            "type": "string"
-          },
-          "secondary_servicer_id": {
-            "type": "string"
-          },
-          "loan_type": {
-            "type": "integer"
-          },
-          "principal_amount": {
-            "type": "integer"
-          },
-          "loan_amount": {
-            "type": "integer"
-          },
-          "collateral_type": {
-            "type": "integer"
-          },
-          "terms_length": {
-            "type": "integer"
-          },
-          "encumbered_status": {
-            "type": "integer"
-          },
-          "interest_rate": {
-            "type": "number"
-          },
-          "term": {
-            "type": "integer"
-          },
-          "payment_frequency": {
-            "type": "integer"
-          },
-          "installment": {
-            "type": "integer"
-          },
+          "applicationId": { "type": "string" },
+          "borrowerId": { "type": "string" },
+          "lenderId": { "type": "string" },
+          "primaryServicerId": { "type": "string" },
+          "secondaryServicerId": { "type": "string" },
+          "loanType": { "type": "string" },
+          "principalAmount": { "type": "number" },
+          "loanAmount": { "type": "number" },
+          "collateralType": { "type": "string" },
+          "termsLength": { "type": "number" },
+          "encumberedStatus": { "type": "string" },
+          "interestRate": { "type": "number" },
+          "term": { "type": "number" },
+          "paymentFrequency": { "type": "string" },
+          "installment": { "type": "number" },
+          "originationDate": { "type": "string", "format": "date" },
+          "maturityDate": { "type": "string", "format": "date" },
+          "firstPaymentDate": { "type": "string", "format": "date" },
+          "lastPaymentDate": { "type": "string", "format": "date" },
+          "nextPaymentDate": { "type": "string", "format": "date" },
+          "defaultProbability": { "type": "number" },
+          "grade": { "type": "string" },
+          "predictedPrincipalPaid": { "type": "number" },
+          "predictedInterestPaid": { "type": "number" },
+          "predictedChargeoffAmount": { "type": "number" },
+          "predictedRecoveredAmount": { "type": "number" },
+          "predictedGrossCashflow": { "type": "number" },
+          "predictedNetCashflow": { "type": "number" },
+          "predictedYield": { "type": "number" },
+          "apr": { "type": "number" },
+          "fairValuePrice": { "type": "number" },
+          "lendingDecisionReason": { "type": "string" },
+          "creditReportHash": { "type": "string" },
+          "retailInstallmentContractHash": { "type": "string" },
+          "applicantCreditVision": { "type": "string" },
+          "coApplicantCreditVision": { "type": "string" },
+          "macroEconomicFeatures": { "type": "string" },
           "details": {
             "type": "object",
             "properties": {
-              "name": {
-                "type": "string"
-              },
-              "dob": {
-                "type": "string",
-                "format": "date"
-              },
+              "name": { "type": "string" },
+              "dob": { "type": "string", "format": "date" },
               "mobile": {
-                "type": "integer"
+                "type": "string",
+                "pattern": "^\\+\\d{1,3}\\d{7,14}$"
               },
-              "govtId": {
-                "type": "string"
-              },
+              "govtId": { "type": "string" },
               "address": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "streetNumber": { "type": "string" },
+                  "streetName": { "type": "string" },
+                  "city": { "type": "string" },
+                  "state": { "type": "string" },
+                  "zipCode": { "type": "string" }
+                }
               },
-              "employmentStatus": {
-                "type": "string"
+              "ssn": { "type": "string" },
+              "driversLicence": { "type": "string" },
+              "driversLicenceState": { "type": "string" },
+              "phoneNumber": {
+                "type": "string",
+                "pattern": "^\\+\\d{1,3}-\\d{7,14}$"
               },
-              "grade": {
-                "type": "string"
-              },
-              "subgrade": {
-                "type": "string"
-              },
-              "employeeTitle": {
-                "type": "string"
-              },
-              "employmentLength": {
-                "type": "integer"
-              },
-              "homeOwnership": {
-                "type": "string"
-              },
-              "annualIncrement": {
-                "type": "integer"
+              "employmentStatus": { "type": "string" },
+              "grade": { "type": "string" },
+              "subgrade": { "type": "string" },
+              "employeeTitle": { "type": "string" },
+              "employmentLength": { "type": "number" },
+              "homeOwnership": { "type": "string" },
+              "annualIncrement": { "type": "number" },
+              "coApplicantData": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "streetNumber": { "type": "string" },
+                      "streetName": { "type": "string" },
+                      "city": { "type": "string" },
+                      "state": { "type": "string" },
+                      "zipCode": { "type": "string" }
+                    }
+                  },
+                  "ssn": { "type": "string" },
+                  "driversLicence": { "type": "string" },
+                  "driversLicenceState": { "type": "string" },
+                  "phoneNumber": {
+                    "type": "string",
+                    "pattern": "^\\+\\d{1,3}-\\d{7,14}$"
+                  }
+                }
               }
             }
           }
         },
         "required": [
-          "borrower_id",
-          "lender_id",
-          "primary_servicer_id",
-          "loan_type",
-          "principal_amount"
+          "applicationId",
+          "borrowerId",
+          "lenderId",
+          "primaryServicerId",
+          "loanType",
+          "principalAmount",
+          "details"
         ]
       },
       "LoanResponse": {

@@ -1,0 +1,98 @@
+---
+title: 'Get Loan by ID'
+openapi: 'GET /loans/{loan_id}'
+---
+
+This endpoint retrieves detailed information about a specific loan, including borrower profile and financial terms.  
+It is ideal for powering dashboards, audit logs, or servicing platforms.
+
+**What it does:**
+- Fetches a loan record using its unique ID
+- Includes financial metadata, repayment state, and borrower identity
+- Displays servicing and underwriting progress for that loan
+
+**When to use it:**
+- When building a loan servicing dashboard
+- When checking repayment status and borrower profile
+- When you need underwriting or origination data
+- When support teams need visibility into the loan lifecycle
+
+## Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `loan_id` | string | Yes | The unique identifier of the loan to retrieve |
+
+## Example Request
+
+```bash
+curl -X GET https://your-api.com/loans/0x1cb52e0315a448ddb84f1fb3016caf0686a864896dec79d7d89d1421d2ff208f \
+  -H "Content-Type: application/json"
+```
+
+## Response
+
+The API returns the event object with all its details, including invitation statistics:
+
+```json
+{
+  "message": "ok",
+  "data": {
+    "loanDetails": {
+      "applicationId": "1",
+      "borrowerId": "1",
+      "borrower": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+      "lenderId": "2",
+      "initialLender": "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+      "primaryServicerId": "3",
+      "secondaryServicerId": "4",
+      "loanServicer": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+      "loanType": "TermLoan",
+      "principalAmount": "150,000,000,000",
+      "loanAmount": "1,500,000,000",
+      "collateralType": "RealEstate",
+      "collateralAmount": "0",
+      "interestRate": "12",
+      "spread": "0",
+      "interestRateType": "Fixed",
+      "state": "ApplicationSubmitted",
+      "encumberedStatus": "Lien",
+      "termsLength": "3,600",
+      "term": "1,200",
+      "repaidAmount": "0",
+      "remainingBalance": "1,500,000,000",
+      "delinquentAmount": "0",
+      "paymentFrequency": "Monthly",
+      "installment": "12",
+      "riskRating": "Low",
+      "createdAt": "1750833432005",
+      "defaultProbability": "0",
+      "apr": "0",
+      "fairValuePrice": "0",
+      "metadata": "Unknown"
+    },
+    "details": {
+      "name": "Paul",
+      "dob": "1999-03-15",
+      "mobile": "+919999999999",
+      "govtId": "1748250",
+      "address": {
+        "streetNumber": "1-23",
+        "streetName": "kphb",
+        "city": "Hyder",
+        "state": "TEl",
+        "zipCode": "506001"
+      },
+      "employmentStatus": "employed",
+      "grade": "C",
+      "subgrade": "C4",
+      "employeeTitle": "Engineer",
+      "employmentLength": 10,
+      "homeOwnership": "MORTGAGE",
+      "annualIncrement": "55000"
+    }
+  }
+}
+
+```
+
