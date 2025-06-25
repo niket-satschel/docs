@@ -61,19 +61,20 @@
           "group": "Loan Service APIs",
             "pages": [
               "api-reference/loans/get-loans",
-              "api-reference/loans/post-acknowledge-repayment",
-              "api-reference/loans/post-approve-collateral",
-              "api-reference/loans/post-close",
-              "api-reference/loans/post-complete-underwriting",
-              "api-reference/loans/post-default",
-              "api-reference/loans/post-disburse-loan",
-              "api-reference/loans/post-loan-repay",
               "api-reference/loans/post-loans",
-              "api-reference/loans/post-notice",
-              "api-reference/loans/post-request-collateral",
               "api-reference/loans/post-request-documents",
+              "api-reference/loans/post-verify-documents",
               "api-reference/loans/post-start-underwriting",
-              "api-reference/loans/post-verify-documents"
+              "api-reference/loans/post-complete-underwriting",
+              "api-reference/loans/post-request-collateral",
+              "api-reference/loans/post-approve-collateral",
+              "api-reference/loans/post-disburse-loan",
+              "api-reference/loans/post-initiate-repayment",
+              "api-reference/loans/post-loan-repay",
+              "api-reference/loans/post-acknowledge-repayment",
+              "api-reference/loans/post-close",
+              "api-reference/loans/post-default",
+              "api-reference/loans/post-notice"
             ]
           }
 

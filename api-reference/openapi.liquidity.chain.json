@@ -151,7 +151,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -182,7 +182,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -213,7 +213,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -244,7 +244,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -275,7 +275,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -306,7 +306,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -337,7 +337,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -350,6 +350,37 @@
         ]
       }
     },
+    "/initiate-repayment": {
+      "post": {
+        "summary": "initiate-repayment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitiateRepayment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },    
     "/loan-repay": {
       "post": {
         "summary": "loan-repay",
@@ -368,7 +399,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -399,7 +430,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -430,7 +461,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -461,7 +492,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -492,7 +523,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoanResponse"
+                  "$ref": "#/components/schemas/TransactionResponse"
                 }
               }
             }
@@ -522,15 +553,39 @@
           "lenderId": { "type": "string" },
           "primaryServicerId": { "type": "string" },
           "secondaryServicerId": { "type": "string" },
-          "loanType": { "type": "string" },
+          "loanType": {
+            "type": "string",
+            "enum": [
+              "TermLoan", "RevolvingCredit", "AssetBased", "Bridge", "Mezzanine",
+              "Syndicated", "EquipmentFinance", "InvoiceFinance", "MerchantCashAdvance",
+              "PersonalLoan", "AutoLoan", "StudentLoan", "Mortgage", "LineOfCredit",
+              "ConstructionLoan", "HardMoneyLoan", "Other"
+            ]
+          },
           "principalAmount": { "type": "number" },
           "loanAmount": { "type": "number" },
-          "collateralType": { "type": "string" },
+          "collateralType": {
+            "type": "string",
+            "enum": [
+              "RealEstate", "Equipment", "Inventory", "Receivables", "Securities", "Cash",
+              "Vehicles", "PersonalGuarantee", "IntellectualProperty", "AgriculturalAssets",
+              "InsurancePolicy", "DepositAccount", "PreciousMetals", "Other", "None"
+            ]
+          },
           "termsLength": { "type": "number" },
-          "encumberedStatus": { "type": "string" },
+          "encumberedStatus": {
+            "type": "string",
+            "enum": [
+              "Lien", "PostedCollateral", "SecurityInterest", "RepossessionInProgress",
+              "TaxLienOrJudgment", "SalvageOrRebuiltTitle", "LeaseBuyoutEncumbrance", "Unencumbered"
+            ]
+          },
           "interestRate": { "type": "number" },
           "term": { "type": "number" },
-          "paymentFrequency": { "type": "string" },
+          "paymentFrequency": {
+            "type": "string",
+            "enum": ["Monthly", "Quarterly", "SemiAnnual", "Annual"]
+          },
           "installment": { "type": "number" },
           "originationDate": { "type": "string", "format": "date" },
           "maturityDate": { "type": "string", "format": "date" },
@@ -615,13 +670,15 @@
           }
         },
         "required": [
-          "applicationId",
-          "borrowerId",
-          "lenderId",
-          "primaryServicerId",
-          "loanType",
-          "principalAmount",
-          "details"
+          "applicationId", "borrowerId", "lenderId", "primaryServicerId", "loanType",
+          "principalAmount", "loanAmount", "collateralType", "termsLength", "encumberedStatus",
+          "interestRate", "term", "paymentFrequency", "installment", "originationDate",
+          "maturityDate", "firstPaymentDate", "lastPaymentDate", "nextPaymentDate",
+          "defaultProbability", "grade", "predictedPrincipalPaid", "predictedInterestPaid",
+          "predictedChargeoffAmount", "predictedRecoveredAmount", "predictedGrossCashflow",
+          "predictedNetCashflow", "predictedYield", "apr", "fairValuePrice",
+          "lendingDecisionReason", "creditReportHash", "retailInstallmentContractHash",
+          "applicantCreditVision", "coApplicantCreditVision", "macroEconomicFeatures", "details"
         ]
       },
       "LoanResponse": {
@@ -631,6 +688,14 @@
             "type": "string"
           },
           "loanId": {
+            "type": "string"
+          }
+        }
+      },
+      "TransactionResponse": {
+        "type": "object",
+        "properties": {
+          "transactionHash": {
             "type": "string"
           }
         }
@@ -662,10 +727,22 @@
         ]
       },
       "StartUnderwriting": {
-        "$ref": "#/components/schemas/VerifyDocuments"
+        "$ref": "#/components/schemas/RequestDocuments"
       },
       "CompleteUnderwriting": {
-        "$ref": "#/components/schemas/VerifyDocuments"
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          },
+          "approved": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "loanId",
+          "approved"
+        ]
       },
       "RequestCollateral": {
         "$ref": "#/components/schemas/RequestDocuments"
@@ -684,6 +761,9 @@
           "loanId",
           "collateralAmount"
         ]
+      },
+      "InitiateRepayment": {
+        "$ref": "#/components/schemas/RequestDocuments"
       },
       "DisburseLoan": {
         "$ref": "#/components/schemas/RequestDocuments"
@@ -708,16 +788,28 @@
         ]
       },
       "AcknowledgeRepayment": {
-        "$ref": "#/components/schemas/LoanRepay"
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          },
+          "refId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loanId",
+          "refId"
+        ]
       },
       "CloseLoan": {
-        "$ref": "#/components/schemas/LoanRepay"
+        "$ref": "#/components/schemas/AcknowledgeRepayment"
       },
       "DefaultLoan": {
-        "$ref": "#/components/schemas/LoanRepay"
+        "$ref": "#/components/schemas/RequestDocuments"
       },
       "NoticeLoan": {
-        "$ref": "#/components/schemas/LoanRepay"
+        "$ref": "#/components/schemas/RequestDocuments"
       }
     }
   },

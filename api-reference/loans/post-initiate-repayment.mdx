@@ -3,29 +3,30 @@ title: 'Initiate Repayment'
 openapi: 'POST /initiate-repayment'
 ---
 
-Initiates the repayment cycle for a disbursed loan.  
-This endpoint marks the official start of the loan repayment process and is typically triggered after disbursement. Once initiated, the system tracks installment due dates and payment status.
+This endpoint initiates the repayment cycle for a disbursed loan.  
+Once called, the system will begin tracking the loan’s installment schedule, due dates, and payment lifecycle.
+
+**What it does:**
+- Signals the start of repayment after disbursement
+- Activates tracking of loan payment cycles
+- Enables monitoring for delinquency or default status
+
+**When to use it:**
+- After the loan has been successfully disbursed
+- When you want the system to begin enforcing repayment timelines
+- Before recording the first loan repayment
 
 ## Request Body
 
-The request must include:
-
-- `loanId`: The unique identifier of the loan for which repayment is being initiated.
-
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/initiate-repayment \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-  }'
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
 ```
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- On success, returns the blockchain transaction hash confirming the initiation:
 
 ```json
 {
