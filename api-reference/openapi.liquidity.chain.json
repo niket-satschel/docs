@@ -93,6 +93,35 @@
         ]
       }
     },
+    "/loans/{loan_id}": {
+      "get": {
+        "summary": "Get loan by loan id",
+        "description": "Get a single event by ID with invitation statistics",
+        "parameters": [
+          {
+            "name": "loan_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventWithStats"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/request-documents": {
       "post": {
         "summary": "request-documents",
@@ -100,17 +129,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-                }
+                "$ref": "#/components/schemas/RequestDocuments"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -127,18 +160,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xb37f175ae91789f72ae3e658129741033666122fadd7848cd52e438a560e7764",
-                  "documentsComplete": true
-                }
+                "$ref": "#/components/schemas/VerifyDocuments"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -155,18 +191,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xb37f175ae91789f72ae3e658129741033666122fadd7848cd52e438a560e7764",
-                  "documentsComplete": true
-                }
+                "$ref": "#/components/schemas/StartUnderwriting"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -183,18 +222,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xb37f175ae91789f72ae3e658129741033666122fadd7848cd52e438a560e7764",
-                  "documentsComplete": true
-                }
+                "$ref": "#/components/schemas/CompleteUnderwriting"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -211,17 +253,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xb37f175ae91789f72ae3e658129741033666122fadd7848cd52e438a560e7764"
-                }
+                "$ref": "#/components/schemas/RequestCollateral"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -238,18 +284,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xb37f175ae91789f72ae3e658129741033666122fadd7848cd52e438a560e7764",
-                  "collateralAmount": 1000
-                }
+                "$ref": "#/components/schemas/ApproveCollateral"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -266,17 +315,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xb37f175ae91789f72ae3e658129741033666122fadd7848cd52e438a560e7764"
-                }
+                "$ref": "#/components/schemas/DisburseLoan"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -293,19 +346,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xc08e6b6313ab7290d7d9286d988a48f02400f3bac592cdd1dd2bcd8e3b6df419",
-                  "amount": 10,
-                  "refId": "ref123"
-                }
+                "$ref": "#/components/schemas/LoanRepay"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -322,19 +377,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xc08e6b6313ab7290d7d9286d988a48f02400f3bac592cdd1dd2bcd8e3b6df419",
-                  "amount": 10,
-                  "refId": "ref123"
-                }
+                "$ref": "#/components/schemas/AcknowledgeRepayment"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -351,19 +408,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xc08e6b6313ab7290d7d9286d988a48f02400f3bac592cdd1dd2bcd8e3b6df419",
-                  "amount": 10,
-                  "refId": "ref123"
-                }
+                "$ref": "#/components/schemas/CloseLoan"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -380,19 +439,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xc08e6b6313ab7290d7d9286d988a48f02400f3bac592cdd1dd2bcd8e3b6df419",
-                  "amount": 10,
-                  "refId": "ref123"
-                }
+                "$ref": "#/components/schemas/DefaultLoan"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -409,19 +470,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "loanId": "0xc08e6b6313ab7290d7d9286d988a48f02400f3bac592cdd1dd2bcd8e3b6df419",
-                  "amount": 10,
-                  "refId": "ref123"
-                }
+                "$ref": "#/components/schemas/NoticeLoan"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -443,46 +506,193 @@
       "LoanRequest": {
         "type": "object",
         "properties": {
-          "borrower_id": { "type": "string" },
-          "lender_id": { "type": "string" },
-          "primary_servicer_id": { "type": "string" },
-          "secondary_servicer_id": { "type": "string" },
-          "loan_type": { "type": "integer" },
-          "principal_amount": { "type": "integer" },
-          "loan_amount": { "type": "integer" },
-          "collateral_type": { "type": "integer" },
-          "terms_length": { "type": "integer" },
-          "encumbered_status": { "type": "integer" },
-          "interest_rate": { "type": "number" },
-          "term": { "type": "integer" },
-          "payment_frequency": { "type": "integer" },
-          "installment": { "type": "integer" },
+          "borrower_id": {
+            "type": "string"
+          },
+          "lender_id": {
+            "type": "string"
+          },
+          "primary_servicer_id": {
+            "type": "string"
+          },
+          "secondary_servicer_id": {
+            "type": "string"
+          },
+          "loan_type": {
+            "type": "integer"
+          },
+          "principal_amount": {
+            "type": "integer"
+          },
+          "loan_amount": {
+            "type": "integer"
+          },
+          "collateral_type": {
+            "type": "integer"
+          },
+          "terms_length": {
+            "type": "integer"
+          },
+          "encumbered_status": {
+            "type": "integer"
+          },
+          "interest_rate": {
+            "type": "number"
+          },
+          "term": {
+            "type": "integer"
+          },
+          "payment_frequency": {
+            "type": "integer"
+          },
+          "installment": {
+            "type": "integer"
+          },
           "details": {
             "type": "object",
             "properties": {
-              "name": { "type": "string" },
-              "dob": { "type": "string", "format": "date" },
-              "mobile": { "type": "integer" },
-              "govtId": { "type": "string" },
-              "address": { "type": "string" },
-              "employmentStatus": { "type": "string" },
-              "grade": { "type": "string" },
-              "subgrade": { "type": "string" },
-              "employeeTitle": { "type": "string" },
-              "employmentLength": { "type": "integer" },
-              "homeOwnership": { "type": "string" },
-              "annualIncrement": { "type": "integer" }
+              "name": {
+                "type": "string"
+              },
+              "dob": {
+                "type": "string",
+                "format": "date"
+              },
+              "mobile": {
+                "type": "integer"
+              },
+              "govtId": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "employmentStatus": {
+                "type": "string"
+              },
+              "grade": {
+                "type": "string"
+              },
+              "subgrade": {
+                "type": "string"
+              },
+              "employeeTitle": {
+                "type": "string"
+              },
+              "employmentLength": {
+                "type": "integer"
+              },
+              "homeOwnership": {
+                "type": "string"
+              },
+              "annualIncrement": {
+                "type": "integer"
+              }
             }
           }
         },
-        "required": ["borrower_id", "lender_id", "primary_servicer_id", "loan_type", "principal_amount"]
+        "required": [
+          "borrower_id",
+          "lender_id",
+          "primary_servicer_id",
+          "loan_type",
+          "principal_amount"
+        ]
       },
       "LoanResponse": {
         "type": "object",
         "properties": {
-          "transactionHash": { "type": "string" },
-          "loanId": { "type": "string" }
+          "transactionHash": {
+            "type": "string"
+          },
+          "loanId": {
+            "type": "string"
+          }
         }
+      },
+      "RequestDocuments": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loanId"
+        ]
+      },
+      "VerifyDocuments": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          },
+          "documentsComplete": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "loanId",
+          "documentsComplete"
+        ]
+      },
+      "StartUnderwriting": {
+        "$ref": "#/components/schemas/VerifyDocuments"
+      },
+      "CompleteUnderwriting": {
+        "$ref": "#/components/schemas/VerifyDocuments"
+      },
+      "RequestCollateral": {
+        "$ref": "#/components/schemas/RequestDocuments"
+      },
+      "ApproveCollateral": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          },
+          "collateralAmount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "loanId",
+          "collateralAmount"
+        ]
+      },
+      "DisburseLoan": {
+        "$ref": "#/components/schemas/RequestDocuments"
+      },
+      "LoanRepay": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "refId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loanId",
+          "amount",
+          "refId"
+        ]
+      },
+      "AcknowledgeRepayment": {
+        "$ref": "#/components/schemas/LoanRepay"
+      },
+      "CloseLoan": {
+        "$ref": "#/components/schemas/LoanRepay"
+      },
+      "DefaultLoan": {
+        "$ref": "#/components/schemas/LoanRepay"
+      },
+      "NoticeLoan": {
+        "$ref": "#/components/schemas/LoanRepay"
       }
     }
   },
