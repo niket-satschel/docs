@@ -3,29 +3,31 @@ title: 'Default Loan'
 openapi: 'POST /default'
 ---
 
-Marks a loan as defaulted.  
-This endpoint is used when the borrower fails to make scheduled repayments beyond a grace period. Marking the loan as defaulted may trigger liquidation of collateral or other recovery processes depending on the agreement.
+This endpoint marks a loan as defaulted due to non-payment. It is typically triggered when the borrower fails to meet repayment obligations within the allowed grace period. Marking a loan as defaulted may initiate downstream processes such as collateral liquidation, recovery actions, or reporting.
+
+**What it does:**
+- Updates the loan status to "defaulted"
+- Signals the platform to begin recovery or liquidation processes
+- Records the default event immutably on-chain
+
+**When to use it:**
+- After the borrower misses scheduled repayments beyond the contractual grace period
+- As part of automated delinquency handling logic
+- Before initiating collateral enforcement or legal action
 
 ## Request Body
 
-The request must include:
+The request body must include the unique identifier of the loan being marked as defaulted:
 
-- `loanId`: The unique identifier of the loan being defaulted.
-
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/default \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-  }'
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
 ```
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a confirmation of success with the blockchain transaction hash:
 
 ```json
 {

@@ -3,31 +3,36 @@ title: 'Complete Underwriting'
 openapi: 'POST /complete-underwriting'
 ---
 
-Marks the underwriting process as complete for a loan.  
-This endpoint is used after internal risk assessment has been finished. It finalizes the underwriting decision and records whether the loan is approved or rejected.
+This endpoint marks the underwriting process as complete for a loan. It finalizes the internal risk evaluation and records the outcome—whether the loan has been approved or rejected. The decision is logged on-chain to maintain transparency and auditability.
+
+**What it does:**
+- Completes the underwriting workflow for a given loan
+- Records the final underwriting decision (`approved` or `rejected`)
+- Updates the loan status accordingly on-chain
+
+**When to use it:**
+- After all underwriting checks, scoring, and risk assessments are complete
+- To finalize eligibility and approval before requesting collateral
+- As a trigger for moving the loan to the next step in the lifecycle
 
 ## Request Body
 
-The request must include:
+The request body must include the loan identifier and the underwriting decision:
+
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+  "approved": true
+}
+```
 
 - `loanId`: The unique identifier of the loan.
-- `approved`: A boolean value (`true` or `false`) indicating the underwriting decision.
 
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/complete-underwriting \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
-    "approved": true
-  }'
-```
+- `approved`: A boolean indicating the final underwriting decision (true for approval, false for rejection).
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a success confirmation with the blockchain transaction hash:
 
 ```json
 {

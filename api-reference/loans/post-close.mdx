@@ -3,31 +3,36 @@ title: 'Close Loan'
 openapi: 'POST /close'
 ---
 
-Closes an active loan once all repayments are complete.  
-This endpoint finalizes the loan lifecycle and releases any encumbered collateral. It is typically triggered after the final repayment is acknowledged and validated.
+This endpoint closes an active loan after all repayment obligations have been fulfilled. It finalizes the loan lifecycle, releases any encumbered collateral, and updates the loan status to "closed" on-chain for transparency and recordkeeping.
+
+**What it does:**
+- Confirms completion of the repayment schedule
+- Releases any associated collateral held during the loan term
+- Marks the loan as closed in the system and on-chain
+
+**When to use it:**
+- After the borrower has made the final repayment
+- Once the final payment is validated and reconciled
+- To formally complete the loan agreement and release collateral
 
 ## Request Body
 
-The request must include:
+The request body must include the loan identifier and the reference ID of the final repayment:
+
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+  "refId": "ref123"
+}
+```
 
 - `loanId`: The unique identifier of the loan to be closed.
-- `refId`: The repayment reference ID associated with the final payment.
 
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/close \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
-    "refId": "ref123"
-  }'
-```
+- `refId`: The reference ID associated with the final repayment transaction.
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a confirmation of success along with the blockchain transaction hash:
 
 ```json
 {

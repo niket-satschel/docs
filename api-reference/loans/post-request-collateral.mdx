@@ -3,29 +3,31 @@ title: 'Request Collateral'
 openapi: 'POST /request-collateral'
 ---
 
-Initiates a request for collateral transfer from the borrower.  
-This is typically triggered once underwriting has been completed and approved. The borrower is expected to transfer the required collateral assets as part of the loan process.
+This endpoint initiates a request for the borrower to transfer the required collateral associated with a loan. It is typically triggered once the underwriting process is successfully completed and the loan has been approved.
+
+**What it does:**
+- Signals the borrower to deposit collateral assets
+- Links the collateral to the corresponding loan
+- Updates the loan status to reflect pending collateral transfer
+
+**When to use it:**
+- After underwriting approval and risk assessment
+- Before disbursing the loan amount
+- To ensure adequate security is received for the loan
 
 ## Request Body
 
-The request must include:
+The request body must include the unique identifier of the loan for which collateral is being requested:
 
-- `loanId`: The unique identifier of the loan for which collateral is being requested.
-
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/request-collateral \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-  }'
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
 ```
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a confirmation of success along with the blockchain transaction hash:
 
 ```json
 {

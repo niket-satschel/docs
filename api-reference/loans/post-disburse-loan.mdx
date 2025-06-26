@@ -3,29 +3,31 @@ title: 'Disburse Loan'
 openapi: 'POST /disburse-loan'
 ---
 
-Disburses the approved loan amount to the borrower.  
-This endpoint is called after the collateral is approved and underwriting is complete. It records the disbursement transaction on-chain.
+This endpoint disburses the approved loan amount to the borrower. It is typically invoked after the loan has successfully completed underwriting and the borrower has transferred the required collateral. The disbursement transaction is recorded on-chain for transparency and auditability.
+
+**What it does:**
+- Transfers the approved loan amount to the borrower
+- Marks the start of the loan repayment cycle
+- Records the disbursement event on-chain
+
+**When to use it:**
+- After underwriting and collateral transfer are completed
+- As the final step before initiating repayment tracking
+- To confirm formal activation of the loan agreement
 
 ## Request Body
 
-The request must include:
+The request body must include the unique identifier of the loan to be disbursed:
 
-- `loanId`: The unique identifier of the loan to be disbursed.
-
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/disburse-loan \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-  }'
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
 ```
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a confirmation of success with the blockchain transaction hash:
 
 ```json
 {

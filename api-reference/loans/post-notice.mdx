@@ -3,29 +3,31 @@ title: 'Send Notice'
 openapi: 'POST /notice'
 ---
 
-Sends a formal notice related to a loan.  
-This endpoint can be used to notify the borrower of upcoming due dates, payment reminders, default warnings, or other important loan-related messages. The notice type and content are typically handled off-chain, while this call logs a reference on-chain.
+This endpoint sends a formal notice associated with a specific loan. It is typically used to notify the borrower or related parties about important loan events, such as upcoming due dates, payment reminders, default warnings, or other critical updates.
+
+**What it does:**
+- Triggers a notice related to the loan lifecycle
+- Communicates borrower obligations or system-triggered events
+- Records a reference to the notice on-chain for audit purposes
+
+**When to use it:**
+- Before an installment due date to remind the borrower
+- In the event of missed payments, triggering a default warning
+- To log any significant loan-related notification or update
 
 ## Request Body
 
-The request must include:
+The request body must include the loan identifier for which the notice is being issued:
 
-- `loanId`: The unique identifier of the loan for which the notice is being sent.
-
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/notice \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-  }'
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
 ```
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a success confirmation with the blockchain transaction hash:
 
 ```json
 {

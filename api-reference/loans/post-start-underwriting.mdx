@@ -3,29 +3,31 @@ title: 'Start Underwriting'
 openapi: 'POST /start-underwriting'
 ---
 
-Initiates the underwriting process for a loan.  
-This endpoint is used after the loan documents have been submitted and verified. It triggers the evaluation process to assess the borrower's risk and loan eligibility.
+This endpoint initiates the underwriting process for a loan. It is typically called after all required loan documents have been submitted and verified. The underwriting process evaluates the borrower’s risk profile and determines loan eligibility based on financial, personal, and macroeconomic factors.
+
+**What it does:**
+- Triggers the loan underwriting workflow
+- Assesses borrower creditworthiness and financial risk
+- Prepares the loan for approval or rejection based on internal models
+
+**When to use it:**
+- After successful document verification
+- Before final loan approval and disbursement
+- As part of the automated or manual credit assessment pipeline
 
 ## Request Body
 
-The request must include:
+The request body should include the unique identifier of the loan:
 
-- `loanId`: The unique identifier of the loan to begin underwriting.
-
-## Example Request
-
-```bash
-curl -X POST https://your-api.com/start-underwriting \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
-  }'
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
 ```
 
 ## Response
 
-- Returns a success confirmation with the blockchain transaction hash.
+- Returns a confirmation of success with the blockchain transaction hash:
 
 ```json
 {
