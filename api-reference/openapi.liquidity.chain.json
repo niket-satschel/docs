@@ -345,7 +345,7 @@
     },
     "/disburse-loan": {
       "post": {
-        "summary": "initiate-repayment",
+        "summary": "disburse-loan",
         "requestBody": {
           "content": {
             "application/json": {
