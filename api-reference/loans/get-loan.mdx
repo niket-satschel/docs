@@ -3,19 +3,20 @@ title: 'Get Loan by ID'
 openapi: 'GET /loans/{loan_id}'
 ---
 
-This endpoint retrieves detailed information about a specific loan, including borrower profile and financial terms.  
-It is ideal for powering dashboards, audit logs, or servicing platforms.
+This endpoint retrieves **complete loan data**, including public financial information and borrower PII (Personally Identifiable Information).  
+It is designed for internal servicing teams, underwriting systems, audit trails, and customer support platforms.
 
 **What it does:**
 - Fetches a loan record using its unique ID
-- Includes financial metadata, repayment state, and borrower identity
-- Displays servicing and underwriting progress for that loan
+- Includes public financial metadata, repayment status, and loan structure
+- Includes PII fields such as borrower name, contact details, and employment info
+- Displays servicing, origination, and underwriting progress
 
 **When to use it:**
-- When building a loan servicing dashboard
-- When checking repayment status and borrower profile
-- When you need underwriting or origination data
-- When support teams need visibility into the loan lifecycle
+- When building a full loan servicing or monitoring dashboard
+- When internal teams need borrower verification and employment insights
+- When underwriting or auditing specific loan histories
+- When investigating repayment behavior or defaults
 
 ## Path Parameters
 
@@ -26,8 +27,10 @@ It is ideal for powering dashboards, audit logs, or servicing platforms.
 ## Example Request
 
 ```bash
-curl -X GET https://your-api.com/loans/0x1cb52e0315a448ddb84f1fb3016caf0686a864896dec79d7d89d1421d2ff208f \
-  -H "Content-Type: application/json"
+curl --request GET \
+  --url https://api.stage.satschel.com/v2/chain/loans/{loan_id} \
+  --header 'Authorization: Bearer <token>' \
+  --header 'key: <key>'
 ```
 
 ## Response

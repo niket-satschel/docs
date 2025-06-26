@@ -1,71 +1,74 @@
 ---
-title: Loan Service API
-description: "Welcome to the home of your new documentation for loan service api"
+title: Introduction
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.png"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.png"
-  alt="Hero Dark"
-/>
+![Loan Lifecycle Banner](/images/loan-lifecycle-banner.png)
 
-## Setting up
+# Welcome to the LQDTY Chain Loan Servicing API
 
-The first step to world-class documentation is setting up your editing environments.
+## Overview
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+The **LQDTY Chain** offers a decentralized, transparent, and programmable infrastructure for managing the complete lifecycle of digital loans. Designed for financial institutions, fintechs, and service providers, this API enables secure interactions across various stages of a loan — from application to repayment and beyond.
 
-## Make it yours
+Our loan servicing protocol is powered by smart contracts and NFT-based representations, ensuring automation, auditability, and compliance across all participants.
 
-Update your docs to your brand and add valuable content for the best user conversion.
+## What You Can Do with This API
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+With this suite of APIs, developers can:
+
+- Submit and manage digital loan applications
+- Trigger and track underwriting, document verification, and approval workflows
+- Request and validate collateral
+- Disburse funds securely on-chain
+- Monitor repayment schedules and default events
+- Access borrower communications and servicer notices
+- Securely store and fetch off-chain PII and financial data
+
+## The Loan Lifecycle on LQDTY
+
+Each loan progresses through a well-defined set of on-chain states:
+
+1. **Application Submission** → Borrower initiates the process
+2. **Document Collection & Verification** → For due diligence
+3. **Underwriting** → Risk and terms assessment
+4. **Collateral Management** → Request, deposit, and approve
+5. **Loan Disbursement** → Funds are released on-chain
+6. **Repayment Initiation & Tracking** → Repayment schedule begins
+7. **Closure / Default Handling** → Based on repayment performance
+
+At every stage, API endpoints facilitate state transitions and update relevant metadata in a role-based, secure manner.
+
+## NFT-Based Loan Representation
+
+The LQDTY protocol uses two non-fungible tokens (NFTs) to represent loan positions:
+
+- **Loan Obligation NFT**: Non-transferable, issued to the borrower as a digital representation of the loan agreement and repayment responsibility.
+- **Lender Certificate NFT**: Transferable, issued to the lender and representing rights to future cash flows — enabling secondary market trades or securitization.
+
+This dual-token system ensures compliance, transparency, and liquidity for all stakeholders.
+
+## Data Architecture
+
+Our system separates loan data into three categories:
+
+- **On-Chain**: Loan state, principal, interest, repayment status, NFTs, and lifecycle transitions
+- **Off-Chain (Non-PII)**: Metadata, repayment history, contract terms (hashed or plaintext)
+- **Off-Chain (PII)**: Borrower details, contact information, employment history — encrypted and securely stored
+
+## Key Features
+
+- 📄 **Role-Based Access**: Granular control for lenders, servicers, and borrowers
+- 🔐 **Secure PII Handling**: PII is encrypted using Bearer-token access
+- 🔁 **Programmable Workflows**: Every loan stage can be advanced via API calls
+- 📊 **Verifiable On-Chain State**: Lifecycle states are tamper-proof and audit-friendly
+- 🛠️ **Developer Friendly**: Consistent endpoint design and payload schemas
+
+## Start Exploring
+
+- 📘 [Loan Lifecycle Guide](./loan-lifecycle)
+- 🔐 [Authentication & Access Control](./authentication)
+- 🧾 [Full API Reference](./api-reference/loans/get-loan)
+
+---
+
+Powering secure, transparent, and programmable lending for the digital economy.

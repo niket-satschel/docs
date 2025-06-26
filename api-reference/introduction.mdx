@@ -1,23 +1,58 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+# Welcome to the Loan Service API documentation
 
-## Welcome
+## Overview
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Our APIs provide secure, programmable access for managing the end-to-end lifecycle of loan servicing.
+Built for financial institutions and fintech platforms, they enable you to:
+
+- Create, underwrite, and disburse digital loans
+- Track repayment schedules and outstanding balances
+- Monitor borrower risk and delinquency
+- Handle collateral and repayment workflows securely
+- Access detailed borrower identity (PII) and credit metadata where applicable
+
+Whether you're building an internal servicing dashboard, integrating with a credit scoring engine, or creating borrower-facing interfaces, our API ensures compliant and secure loan data handling.
+
+---
+
+## 🔗 Quick Links
+
+| Endpoint | Description |
+|---------|-------------|
+| [`POST /loans`](/api-reference/loans/post-loans) | Create a new loan |
+| [`GET /loans/{loan_id}`](/api-reference/loans/get-loan) | Get loan data with PII |
+| [`GET /loan-data/{loan_id}`](/api-reference/loans/get-public-loan-data) | Get public loan data only (no PII) |
+| [`POST /initiate-repayment`](/api-reference/loans/post-initiate-repayment) | Initiate the repayment cycle |
+| [`POST /loan-repay`](/api-reference/loans/post-loan-repay) | Submit a repayment |
+| [`POST /acknowledge-repayment`](/api-reference/loans/post-acknowledge-repayment) | Confirm repayment completion |
+| [`POST /start-underwriting`](/api-reference/loans/post-start-underwriting) | Start the underwriting phase |
+| [`POST /complete-underwriting`](/api-reference/loans/post-complete-underwriting) | Finalize underwriting decision |
+
+---
+
+## 🔍 Public vs PII Endpoint Comparison
+
+| Endpoint | Returns Public Loan Data | Returns Borrower PII | Intended Use |
+|---------|---------------------------|----------------------|--------------|
+| `GET /loan-data/{loan_id}` | ✅ Yes | ❌ No | External dashboards, analytics, marketplaces |
+| `GET /loans/{loan_id}`     | ✅ Yes | ✅ Yes | Internal servicing, support teams, audit trails |
+
+---
+
+## API Endpoints
+
+Explore our full API reference to seamlessly integrate loan servicing capabilities into your application.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="Loan Service Endpoints"
+  icon="briefcase"
+  href="/api-reference/loans/get-loan"
 >
-  View the OpenAPI specification file
+  Get started with our API
 </Card>
 
 ## Authentication
@@ -31,3 +66,12 @@ All API endpoints are authenticated using Bearer tokens and picked up from the s
   }
 ]
 ```
+
+To obtain an API key, please contact our support team.
+
+### API Playground Authentication
+
+When using the API playground in this documentation:
+
+1. Click the "Headers" button below the endpoint URL
+2. Add a new header with key `key` and value `your_api_key_here`

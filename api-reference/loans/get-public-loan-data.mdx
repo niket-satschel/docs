@@ -1,21 +1,20 @@
 ---
-title: 'Get Loans'
+title: 'Get Public Loan Data'
 openapi: 'GET /loan-data/{loan_id}'
 ---
 
-This endpoint retrieves detailed information about a specific loan, including borrower profile and financial terms.  
-It is ideal for powering dashboards, audit logs, or servicing platforms.
+Retrieves public metadata of a specific loan by its unique ID.  
+This endpoint exposes non-PII information suitable for analytics dashboards, loan marketplaces, or risk reporting systems.
 
 **What it does:**
-- Fetches a loan record using its unique ID
-- Includes financial metadata, repayment state, and borrower identity
-- Displays servicing and underwriting progress for that loan
+- Fetches a loan record using its ID
+- Includes public financial metrics and loan lifecycle status
+- Excludes borrower PII and sensitive underwriting details
 
 **When to use it:**
-- When building a loan servicing dashboard
-- When checking repayment status and borrower profile
-- When you need underwriting or origination data
-- When support teams need visibility into the loan lifecycle
+- When building a public or internal analytics dashboard
+- When displaying loan terms and repayment status
+- When populating loan marketplace listings
 
 ## Path Parameters
 
@@ -32,7 +31,7 @@ curl -X GET https://your-api.com/loan-data/0x1cb52e0315a448ddb84f1fb3016caf0686a
 
 ## Response
 
-The API returns the event object with all its details, including invitation statistics:
+- Returns public loan data excluding borrower identity or contact information:
 
 ```json
 {
@@ -40,43 +39,33 @@ The API returns the event object with all its details, including invitation stat
   "data": {
     "loanDetails": {
       "applicationId": "app_6f42e4a1-03e2-4b10-a2e6-872f83a998d4",
-      "borrowerId": "app_6f42e4a1-03e2-4b10-a2e6-872f83a998d4",
-      "borrower": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
-      "lenderId": "app_6f42e4a1-03e2-4b10-a2e6-872f83a998d4",
-      "initialLender": "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
-      "primaryServicerId": "app_6f42e4a1-03e2-4b10-a2e6-872f83a998d4",
-      "secondaryServicerId": "ac123",
-      "loanServicer": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "loanType": "AutoLoan",
-      "principalAmount": "1,000",
-      "loanAmount": "1,500",
+      "principalAmount": "1000",
+      "loanAmount": "1500",
       "collateralType": "Vehicles",
-      "collateralAmount": "1,000",
+      "collateralAmount": "1000",
       "interestRate": "250",
       "spread": "0",
       "interestRateType": "Fixed",
       "indexRate": "",
-      "originationDate": "1,718,783,832",
-      "maturityDate": "1,781,855,832",
+      "originationDate": "1718783832",
+      "maturityDate": "1781855832",
       "amortizationType": "FullAmortization",
       "state": "Approved",
       "encumberedStatus": "Lien",
-      "termsLength": "1,500",
+      "termsLength": "1500",
       "term": "12",
       "repaidAmount": "0",
-      "remainingBalance": "1,500",
-      "startBlock": null,
-      "delinquentAmount": "0",
-      "delinquentDays": "0",
+      "remainingBalance": "1500",
       "paymentFrequency": "Monthly",
       "installment": "0",
       "riskRating": "Low",
-      "firstPaymentDate": "1,721,385,832",
-      "lastPaymentDate": "1,724,071,832",
-      "nextPaymentDate": "1,726,663,832",
+      "firstPaymentDate": "1721385832",
+      "lastPaymentDate": "1724071832",
+      "nextPaymentDate": "1726663832",
       "prepaymentPenalty": "0",
       "lateFee": "0",
-      "createdAt": "1,750,857,468,001",
+      "createdAt": "1750857468001",
       "defaultProbability": "1",
       "grade": "A",
       "predictedPrincipalPaid": "1",
@@ -98,6 +87,7 @@ The API returns the event object with all its details, including invitation stat
     }
   }
 }
+
 
 ```
 
