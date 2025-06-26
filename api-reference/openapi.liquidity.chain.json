@@ -621,75 +621,78 @@
           "nextPaymentDate": { "type": "string", "format": "date", "example": "2025-07-15" },
           "defaultProbability": { "type": "number", "example": "0.015" },
           "grade": { "type": "string", "example": "B" },
-          "predictedPrincipalPaid": { "type": "number" },
-          "predictedInterestPaid": { "type": "number" },
-          "predictedChargeoffAmount": { "type": "number" },
-          "predictedRecoveredAmount": { "type": "number" },
-          "predictedGrossCashflow": { "type": "number" },
-          "predictedNetCashflow": { "type": "number" },
-          "predictedYield": { "type": "number" },
-          "apr": { "type": "number" },
-          "fairValuePrice": { "type": "number" },
-          "lendingDecisionReason": { "type": "string" },
-          "creditReportHash": { "type": "string" },
-          "retailInstallmentContractHash": { "type": "string" },
-          "applicantCreditVision": { "type": "string" },
-          "coApplicantCreditVision": { "type": "string" },
-          "macroEconomicFeatures": { "type": "string" },
+          "predictedPrincipalPaid": { "type": "number", "example": "1500" },
+          "predictedInterestPaid": { "type": "number", "example": "400" },
+          "predictedChargeoffAmount": { "type": "number", "example": "100" },
+          "predictedRecoveredAmount": { "type": "number", "example": "50" },
+          "predictedGrossCashflow": { "type": "number", "example": "1500" },
+          "predictedNetCashflow": { "type": "number", "example": "1450" },
+          "predictedYield": { "type": "number", "example": "0.35" },
+          "apr": { "type": "number", "example": "0.28" },
+          "fairValuePrice": { "type": "number", "example": "1425" },
+          "lendingDecisionReason": { "type": "string", "example": "Approved based on adjusted LTV and strong employment history" },
+          "creditReportHash": { "type": "string", "example": "0xa3f1c8b6d42e7e9149d0b8a2fe67c9d5beed0123a1c4e7f89b23d6a5f9e4bc10" },
+          "retailInstallmentContractHash": { "type": "string", "example": "0xa3f1c8b6d42e7e9149d0b8a2fe67c9d5beed0123a1c4e7f89b23d6a5f9e4bc10" },
+          "applicantCreditVision": { "type": "string", "example": "FICO 680, stable income, low credit utilization" },
+          "coApplicantCreditVision": { "type": "string", "example": "FICO 660, 1 missed payment in 12 months" },
+          "macroEconomicFeatures": { "type": "string", "example": "Unemployment 3.8%, CPI 3.1%, Fed rate 5.25%" },
           "details": {
             "type": "object",
             "properties": {
-              "name": { "type": "string" },
-              "dob": { "type": "string", "format": "date" },
+              "name": { "type": "string", "example": "Alice Johnson" },
+              "dob": { "type": "string", "format": "date", "example": "1990-05-15" },
               "mobile": {
                 "type": "string",
-                "pattern": "^\\+\\d{1,3}\\d{7,14}$"
+                "pattern": "^\\+\\d{1,3}\\d{7,14}$",
+                "example": "+12025550123"
               },
-              "govtId": { "type": "string" },
+              "govtId": { "type": "string", "example": "CA1234567" },
               "address": {
                 "type": "object",
                 "properties": {
-                  "streetNumber": { "type": "string" },
-                  "streetName": { "type": "string" },
-                  "city": { "type": "string" },
-                  "state": { "type": "string" },
-                  "zipCode": { "type": "string" }
+                  "streetNumber": { "type": "string", "example": "123" },
+                  "streetName": { "type": "string", "example": "Maple Street" },
+                  "city": { "type": "string", "example": "Los Angeles" },
+                  "state": { "type": "string", "example": "CA" },
+                  "zipCode": { "type": "string", "example": "90001" }
                 }
               },
-              "ssn": { "type": "string" },
-              "driversLicence": { "type": "string" },
-              "driversLicenceState": { "type": "string" },
+              "ssn": { "type": "string", "example": "XXX-XX-6789" },
+              "driversLicence": { "type": "string", "example": "D1234567" },
+              "driversLicenceState": { "type": "string", "example": "CA" },
               "phoneNumber": {
                 "type": "string",
-                "pattern": "^\\+\\d{1,3}-\\d{7,14}$"
+                "pattern": "^\\+\\d{1,3}\\d{7,14}$",
+                "example": "+12025550123"
               },
-              "employmentStatus": { "type": "string" },
-              "grade": { "type": "string" },
-              "subgrade": { "type": "string" },
-              "employeeTitle": { "type": "string" },
-              "employmentLength": { "type": "number" },
-              "homeOwnership": { "type": "string" },
-              "annualIncrement": { "type": "number" },
+              "employmentStatus": { "type": "string", "example": "Employed" },
+              "grade": { "type": "string", "example": "A" },
+              "subgrade": { "type": "string", "example": "A1" },
+              "employeeTitle": { "type": "string", "example": "Software Engineer" },
+              "employmentLength": { "type": "number", "example": 60 },
+              "homeOwnership": { "type": "string", "example": "Mortgage" },
+              "annualIncrement": { "type": "number", "example": 5 },
               "coApplicantData": {
                 "type": "object",
                 "properties": {
-                  "name": { "type": "string" },
+                  "name": { "type": "string", "example": "Robert Johnson" },
                   "address": {
                     "type": "object",
                     "properties": {
-                      "streetNumber": { "type": "string" },
-                      "streetName": { "type": "string" },
-                      "city": { "type": "string" },
-                      "state": { "type": "string" },
-                      "zipCode": { "type": "string" }
+                      "streetNumber": { "type": "string", "example": "123" },
+                      "streetName": { "type": "string", "example": "Maple Street" },
+                      "city": { "type": "string", "example": "Los Angeles" },
+                      "state": { "type": "string", "example": "CA" },
+                      "zipCode": { "type": "string", "example": "90001" }
                     }
                   },
-                  "ssn": { "type": "string" },
-                  "driversLicence": { "type": "string" },
-                  "driversLicenceState": { "type": "string" },
+                  "ssn": { "type": "string", "example": "XXX-XX-9876" },
+                  "driversLicence": { "type": "string", "example": "D7654321" },
+                  "driversLicenceState": { "type": "string", "example": "CA" },
                   "phoneNumber": {
                     "type": "string",
-                    "pattern": "^\\+\\d{1,3}-\\d{7,14}$"
+                    "pattern": "^\\+\\d{1,3}\\d{7,14}$",
+                    "example": "+12025550456"
                   }
                 }
               }
@@ -796,77 +799,98 @@
         "type": "object",
         "properties": {
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0xe8767b8fe19bd639e80505bf399e7df57b56c7ecd1f69d5e5499b436ece087ed"
           },
           "metadata": {
             "type": "object",
             "properties": {
               "fundedDate": {
                 "type": "string",
-                "format": "date"
+                "format": "date",
+                "example": "2024-06-15"
               },
               "currentDpd": {
-                "type": "number"
+                "type": "number",
+                "example": 0
               },
               "originalBalance": {
-                "type": "number"
+                "type": "number",
+                "example": 1500
               },
               "currentBalance": {
-                "type": "number"
+                "type": "number",
+                "example": 1450
               },
               "originalTerm": {
-                "type": "number"
+                "type": "number",
+                "example": 36
               },
               "remainingTerm": {
-                "type": "number"
+                "type": "number",
+                "example": 35
               },
               "pti": {
                 "type": "number",
-                "description": "Payment-to-income ratio (e.g., 0.3 = 30%)"
+                "description": "Payment-to-income ratio (e.g., 0.3 = 30%)",
+                "example": 0.25
               },
               "dti": {
                 "type": "number",
-                "description": "Debt-to-income ratio (e.g., 0.4 = 40%)"
+                "description": "Debt-to-income ratio (e.g., 0.4 = 40%)",
+                "example": 0.35
               },
               "ltv": {
                 "type": "number",
-                "description": "Loan-to-value ratio (e.g., 0.8 = 80%)"
+                "description": "Loan-to-value ratio (e.g., 0.8 = 80%)",
+                "example": 0.85
               },
               "scheduledPayment": {
-                "type": "number"
+                "type": "number",
+                "example": 50
               },
               "currentPaymentDue": {
-                "type": "number"
+                "type": "number",
+                "example": 50
               },
               "pastDueAmount": {
-                "type": "number"
+                "type": "number",
+                "example": 0
               },
               "totalPrincipalPaid": {
-                "type": "number"
+                "type": "number",
+                "example": 50
               },
               "totalInterestPaid": {
-                "type": "number"
+                "type": "number",
+                "example": 8
               },
               "totalFeesPaid": {
-                "type": "number"
+                "type": "number",
+                "example": 2
               },
               "chargeoffAmount": {
-                "type": "number"
+                "type": "number",
+                "example": 0
               },
               "recoveredAmount": {
-                "type": "number"
+                "type": "number",
+                "example": 0
               },
               "paymentStatus": {
                 "type": "string",
-                "description": "e.g., 'On Time', 'Late', 'Defaulted'"
+                "description": "e.g., 'On Time', 'Late', 'Defaulted'",
+                "example": "On Time"
               },
               "scheduledMaturityDate": {
                 "type": "string",
-                "format": "date"
+                "format": "date",
+                "example": "2027-06-15"
               },
               "businessName": {
                 "type": "string",
-                "description": "Optional field for business loans"
+                "description": "Optional field for business loans",
+                "example": "Johnson Auto Sales LLC"
               }
             },
             "required": [
@@ -894,7 +918,7 @@
         },
         "required": [
           "loanId",
-          "Metadata"
+          "metadata"
         ]
       },
       "LoanRepay": {
