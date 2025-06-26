@@ -49,18 +49,10 @@
             ]
           },
           {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          },
-          {
           "group": "Loan Service APIs",
             "pages": [
               "api-reference/loans/get-loans",
+              "api-reference/loans/get-loan",
               "api-reference/loans/post-loans",
               "api-reference/loans/post-request-documents",
               "api-reference/loans/post-verify-documents",

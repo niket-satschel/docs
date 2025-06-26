@@ -107,7 +107,7 @@
     "/loans/{loan_id}": {
       "get": {
         "summary": "Get loan by loan id",
-        "description": "Get a single event by ID with invitation statistics",
+        "description": "Get a single Loan by ID with PII information",
         "parameters": [
           {
             "name": "loan_id",
@@ -115,20 +115,22 @@
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Event Id"
+              "title": "Loan Id"
             }
+          },
+          {
+            "name": "key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key for authentication"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EventWithStats"
-                }
-              }
-            }
+            "description": "Successful Response"
           }
         }
       }
