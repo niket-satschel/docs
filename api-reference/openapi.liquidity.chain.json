@@ -572,13 +572,14 @@
       "LoanRequest": {
         "type": "object",
         "properties": {
-          "applicationId": { "type": "string" },
-          "borrowerId": { "type": "string" },
-          "lenderId": { "type": "string" },
-          "primaryServicerId": { "type": "string" },
-          "secondaryServicerId": { "type": "string" },
+          "applicationId": { "type": "string", "example": "app-usa-2025-0001" },
+          "borrowerId": { "type": "string", "example": "user_98765" },
+          "lenderId": { "type": "string", "example": "lender_capital_auto_01" },
+          "primaryServicerId": { "type": "string", "example": "servicer_us_main" },
+          "secondaryServicerId": { "type": "string", "example": "servicer_backup_us1" },
           "loanType": {
             "type": "string",
+            "example": "AutoLoan",
             "enum": [
               "TermLoan", "RevolvingCredit", "AssetBased", "Bridge", "Mezzanine",
               "Syndicated", "EquipmentFinance", "InvoiceFinance", "MerchantCashAdvance",
@@ -586,38 +587,40 @@
               "ConstructionLoan", "HardMoneyLoan", "Other"
             ]
           },
-          "principalAmount": { "type": "number" },
-          "loanAmount": { "type": "number" },
+          "principalAmount": { "type": "number", "example": "1000" },
+          "loanAmount": { "type": "number", "example": "1500" },
           "collateralType": {
             "type": "string",
+            "example": "Vehicles",
             "enum": [
               "RealEstate", "Equipment", "Inventory", "Receivables", "Securities", "Cash",
               "Vehicles", "PersonalGuarantee", "IntellectualProperty", "AgriculturalAssets",
               "InsurancePolicy", "DepositAccount", "PreciousMetals", "Other", "None"
             ]
           },
-          "termsLength": { "type": "number" },
           "encumberedStatus": {
             "type": "string",
+            "example": "Lien",
             "enum": [
               "Lien", "PostedCollateral", "SecurityInterest", "RepossessionInProgress",
               "TaxLienOrJudgment", "SalvageOrRebuiltTitle", "LeaseBuyoutEncumbrance", "Unencumbered"
             ]
           },
-          "interestRate": { "type": "number" },
-          "term": { "type": "number" },
+          "interestRate": { "type": "number", "example": "5.75" },
+          "term": { "type": "number", "example": "12" },
           "paymentFrequency": {
             "type": "string",
+            "example": "Monthly" ,
             "enum": ["Monthly", "Quarterly", "SemiAnnual", "Annual"]
           },
-          "installment": { "type": "number" },
-          "originationDate": { "type": "string", "format": "date" },
-          "maturityDate": { "type": "string", "format": "date" },
-          "firstPaymentDate": { "type": "string", "format": "date" },
-          "lastPaymentDate": { "type": "string", "format": "date" },
-          "nextPaymentDate": { "type": "string", "format": "date" },
-          "defaultProbability": { "type": "number" },
-          "grade": { "type": "string" },
+          "installment": { "type": "number", "example": "12" },
+          "originationDate": { "type": "string", "format": "date", "example": "2025-06-15" },
+          "maturityDate": { "type": "string", "format": "date", "example": "2026-06-15" },
+          "firstPaymentDate": { "type": "string", "format": "date", "example": "2025-07-15" },
+          "lastPaymentDate": { "type": "string", "format": "date", "example": "2026-06-15" },
+          "nextPaymentDate": { "type": "string", "format": "date", "example": "2025-07-15" },
+          "defaultProbability": { "type": "number", "example": "0.015" },
+          "grade": { "type": "string", "example": "B" },
           "predictedPrincipalPaid": { "type": "number" },
           "predictedInterestPaid": { "type": "number" },
           "predictedChargeoffAmount": { "type": "number" },
@@ -790,7 +793,109 @@
         "$ref": "#/components/schemas/RequestDocuments"
       },
       "DisburseLoan": {
-        "$ref": "#/components/schemas/RequestDocuments"
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "fundedDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "currentDpd": {
+                "type": "number"
+              },
+              "originalBalance": {
+                "type": "number"
+              },
+              "currentBalance": {
+                "type": "number"
+              },
+              "originalTerm": {
+                "type": "number"
+              },
+              "remainingTerm": {
+                "type": "number"
+              },
+              "pti": {
+                "type": "number",
+                "description": "Payment-to-income ratio (e.g., 0.3 = 30%)"
+              },
+              "dti": {
+                "type": "number",
+                "description": "Debt-to-income ratio (e.g., 0.4 = 40%)"
+              },
+              "ltv": {
+                "type": "number",
+                "description": "Loan-to-value ratio (e.g., 0.8 = 80%)"
+              },
+              "scheduledPayment": {
+                "type": "number"
+              },
+              "currentPaymentDue": {
+                "type": "number"
+              },
+              "pastDueAmount": {
+                "type": "number"
+              },
+              "totalPrincipalPaid": {
+                "type": "number"
+              },
+              "totalInterestPaid": {
+                "type": "number"
+              },
+              "totalFeesPaid": {
+                "type": "number"
+              },
+              "chargeoffAmount": {
+                "type": "number"
+              },
+              "recoveredAmount": {
+                "type": "number"
+              },
+              "paymentStatus": {
+                "type": "string",
+                "description": "e.g., 'On Time', 'Late', 'Defaulted'"
+              },
+              "scheduledMaturityDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "businessName": {
+                "type": "string",
+                "description": "Optional field for business loans"
+              }
+            },
+            "required": [
+              "fundedDate",
+              "currentDpd",
+              "originalBalance",
+              "currentBalance",
+              "originalTerm",
+              "remainingTerm",
+              "pti",
+              "dti",
+              "ltv",
+              "scheduledPayment",
+              "currentPaymentDue",
+              "pastDueAmount",
+              "totalPrincipalPaid",
+              "totalInterestPaid",
+              "totalFeesPaid",
+              "chargeoffAmount",
+              "recoveredAmount",
+              "paymentStatus",
+              "scheduledMaturityDate"
+            ]
+          }
+        },
+        "required": [
+          "loanId",
+          "Metadata"
+        ]
       },
       "LoanRepay": {
         "type": "object",

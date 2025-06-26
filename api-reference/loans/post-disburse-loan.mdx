@@ -21,7 +21,29 @@ The request body must include the unique identifier of the loan to be disbursed:
 
 ```json
 {
-  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+  "metadata": {
+    "fundedDate": "2024-06-01",
+    "currentDpd": 0,
+    "originalBalance": 500000,
+    "currentBalance": 500000,
+    "originalTerm": 120,
+    "remainingTerm": 120,
+    "pti": 0.3,
+    "dti": 0.4,
+    "ltv": 0.8,
+    "scheduledPayment": 12000,
+    "currentPaymentDue": 12000,
+    "pastDueAmount": 0,
+    "totalPrincipalPaid": 0,
+    "totalInterestPaid": 0,
+    "totalFeesPaid": 0,
+    "chargeoffAmount": 0,
+    "recoveredAmount": 0,
+    "paymentStatus": "On Time",
+    "scheduledMaturityDate": "2034-06-01",
+    "businessName": "Acme Corp"
+  }
 }
 ```
 
