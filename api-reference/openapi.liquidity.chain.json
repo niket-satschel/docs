@@ -135,6 +135,28 @@
         }
       }
     },
+    "/loan-data/{loan_id}": {
+      "get": {
+        "summary": "Get loan by loan id",
+        "description": "Get a single Loan by ID without PII information",
+        "parameters": [
+          {
+            "name": "loan_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Loan Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response"
+          }
+        }
+      }
+    },
     "/request-documents": {
       "post": {
         "summary": "request-documents",
