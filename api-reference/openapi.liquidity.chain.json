@@ -708,7 +708,7 @@
           }
         },
         "required": [
-          "applicationId", "borrowerId", "lenderId", "primaryServicerId", "loanType",
+          "applicationId", "borrowerId", "lenderId", "primaryServicerId", "secondaryServicerId", "loanType",
           "principalAmount", "loanAmount", "collateralType", "termsLength", "encumberedStatus",
           "interestRate", "term", "paymentFrequency", "installment", "originationDate",
           "maturityDate", "firstPaymentDate", "lastPaymentDate", "nextPaymentDate",
