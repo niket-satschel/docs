@@ -10,9 +10,9 @@
     }
   ],
   "paths": {
-    "/loans": {
+    "/applications": {
       "post": {
-        "summary": "loans",
+        "summary": "Create loan application",
         "parameters": [
           {
             "name": "key",
@@ -52,7 +52,7 @@
         ]
       },
       "get": {
-        "summary": "loans",
+        "summary": "applications",
         "requestBody": {
           "content": {
             "application/json": {
@@ -104,7 +104,7 @@
         ]
       }
     },
-    "/loans/{loan_id}": {
+    "/applications/{loan_id}": {
       "get": {
         "summary": "Get loan by loan id",
         "description": "Get a single Loan by ID with PII information",
@@ -591,10 +591,10 @@
           "loanAmount": { "type": "number", "example": "1500" },
           "collateralType": {
             "type": "string",
-            "example": "Vehicles",
+            "example": "Vehicle",
             "enum": [
               "RealEstate", "Equipment", "Inventory", "Receivables", "Securities", "Cash",
-              "Vehicles", "PersonalGuarantee", "IntellectualProperty", "AgriculturalAssets",
+              "Vehicle", "PersonalGuarantee", "IntellectualProperty", "AgriculturalAssets",
               "InsurancePolicy", "DepositAccount", "PreciousMetals", "Other", "None"
             ]
           },
