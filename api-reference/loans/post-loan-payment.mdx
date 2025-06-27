@@ -1,19 +1,19 @@
 ---
-title: 'Loan Repay'
-openapi: 'POST /loan-repay'
+title: 'Loan Payment'
+openapi: 'POST /loan-payment'
 ---
 
-This endpoint is used to submit a repayment transaction against an active loan. It is typically invoked by the borrower or an authorized repayment agent to pay a scheduled installment or make a partial repayment as per the loan agreement.
+This endpoint is used to submit a **loan payment** against an active loan. It is typically invoked by the borrower or an authorized repayment agent to pay a scheduled installment or make a partial payment as per the loan agreement.
 
-**What it does:**
-- Records a repayment against the specified loan
-- Reduces the outstanding principal and/or interest
-- Logs the repayment on-chain for transparency and audit
+## What it does
+- Records a **loan payment** against the specified loan
+- Reduces the outstanding **principal** and/or **interest**
+- Logs the payment **on-chain** for transparency and audit purposes
 
-**When to use it:**
+## When to use it
 - On or before a scheduled installment due date
-- For manual or automated repayment processing
-- When reconciling payments through third-party systems
+- For manual or automated loan payment processing
+- When reconciling payments through third-party systems or channels
 
 ## Request Body
 

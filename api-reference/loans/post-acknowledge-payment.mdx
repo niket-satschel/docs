@@ -1,0 +1,42 @@
+---
+title: 'Acknowledge Payment'
+openapi: 'POST /acknowledge-payment'
+---
+
+This endpoint acknowledges the receipt and successful validation of a **payment** made against a loan. It is typically called by the platform, servicer, or payment processor after confirming the associated transaction on-chain or via off-chain reconciliation mechanisms.
+
+## What it does
+- Confirms that a previously submitted **payment** has been received and verified
+- Logs the **payment confirmation** for audit and recordkeeping
+- Advances the loan status in the **payment lifecycle**
+
+## When to use it
+- After verifying a **payment** via blockchain event or payment gateway
+- To ensure that the payment tied to a specific **reference ID** is officially recorded
+- Before moving forward with next steps like **closing the loan** or triggering **payment-related notifications**
+
+
+## Request Body
+
+The request body must include the loan identifier and the **payment reference ID**:
+
+```json
+{
+  "loanId": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73",
+  "refId": "ref123"
+}
+```
+
+- `loanId`: The unique identifier of the loan.
+
+- `refId`: The reference ID used in the original repayment transaction (loan-repay).
+
+## Response
+
+- Returns a success confirmation with the blockchain transaction hash:
+
+```json
+{
+  "transactionHash": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
+}
+```

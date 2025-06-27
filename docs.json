@@ -37,9 +37,9 @@
               "api-reference/loans/post-request-collateral",
               "api-reference/loans/post-approve-collateral",
               "api-reference/loans/post-disburse-loan",
-              "api-reference/loans/post-initiate-repayment",
-              "api-reference/loans/post-loan-repay",
-              "api-reference/loans/post-acknowledge-repayment",
+              "api-reference/loans/post-initiate-payment",
+              "api-reference/loans/post-loan-payment",
+              "api-reference/loans/post-acknowledge-payment",
               "api-reference/loans/post-close",
               "api-reference/loans/post-default",
               "api-reference/loans/post-notice"

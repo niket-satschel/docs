@@ -93,6 +93,22 @@ curl -X GET https://your-api.com/loan-data/0x1cb52e0315a448ddb84f1fb3016caf0686a
       "applicantCreditVision": "FICO 680, stable income, low credit utilization",
       "coApplicantCreditVision": "FICO 660, 1 missed payment in 12 months",
       "macroEconomicFeatures": "Unemployment 3.8%, CPI 3.1%, Fed rate 5.25%",
+      "loanPayments": [
+          {
+              "paymentId": "REF123",
+              "paymentAmount": "5,500",
+              "paymentDate": "2024-06-27",
+              "remainingBalance": "9,500",
+              "principalAmount": "15,000"
+          },
+          {
+              "paymentId": "REF124",
+              "paymentAmount": "9,500",
+              "paymentDate": "2024-06-27",
+              "remainingBalance": "0",
+              "principalAmount": "15,000"
+          }
+      ],
       "metadata": {
         "AutoLoan": {
           "fundedDate": "2024-06-15",

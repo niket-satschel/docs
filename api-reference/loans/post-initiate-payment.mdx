@@ -1,20 +1,21 @@
 ---
-title: 'Initiate Repayment'
-openapi: 'POST /initiate-repayment'
+title: 'Initiate Payment'
+openapi: 'POST /initiate-payment'
 ---
 
-This endpoint initiates the repayment cycle for a disbursed loan.  
+This endpoint initiates the **loan payment cycle** for a disbursed loan.  
 Once called, the system will begin tracking the loan’s installment schedule, due dates, and payment lifecycle.
 
-**What it does:**
-- Signals the start of repayment after disbursement
-- Activates tracking of loan payment cycles
-- Enables monitoring for delinquency or default status
 
-**When to use it:**
+## What it does
+- Signals the start of **loan payments** after disbursement
+- Activates tracking of the loan **payment schedule**
+- Enables monitoring for **delinquency** or **default** status
+
+## When to use it
 - After the loan has been successfully disbursed
-- When you want the system to begin enforcing repayment timelines
-- Before recording the first loan repayment
+- When you want the system to begin enforcing **payment timelines**
+- Before recording the first **loan payment**
 
 ## Request Body
 

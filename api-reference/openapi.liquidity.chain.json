@@ -374,9 +374,9 @@
         ]
       }
     },
-    "/initiate-repayment": {
+    "/initiate-payment": {
       "post": {
-        "summary": "initiate-repayment",
+        "summary": "initiate-payment",
         "requestBody": {
           "content": {
             "application/json": {
@@ -405,9 +405,9 @@
         ]
       }
     },    
-    "/loan-repay": {
+    "/loan-payment": {
       "post": {
-        "summary": "loan-repay",
+        "summary": "loan-payment",
         "requestBody": {
           "content": {
             "application/json": {
@@ -436,14 +436,14 @@
         ]
       }
     },
-    "/acknowledge-repayment": {
+    "/acknowledge-payment": {
       "post": {
-        "summary": "acknowledge-repayment",
+        "summary": "acknowledge-payment",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AcknowledgeRepayment"
+                "$ref": "#/components/schemas/AcknowledgePayment"
               }
             }
           }
@@ -940,7 +940,7 @@
           "refId"
         ]
       },
-      "AcknowledgeRepayment": {
+      "AcknowledgePayment": {
         "type": "object",
         "properties": {
           "loanId": {
@@ -956,7 +956,7 @@
         ]
       },
       "CloseLoan": {
-        "$ref": "#/components/schemas/AcknowledgeRepayment"
+        "$ref": "#/components/schemas/AcknowledgePayment"
       },
       "DefaultLoan": {
         "$ref": "#/components/schemas/RequestDocuments"
