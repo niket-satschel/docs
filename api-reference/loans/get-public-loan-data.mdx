@@ -92,7 +92,11 @@ curl -X GET https://your-api.com/loan-data/0x1cb52e0315a448ddb84f1fb3016caf0686a
       "retailInstallmentContractHash": "0xa3f1c8b6d42e7e9149d0b8a2fe67c9d5beed0123a1c4e7f89b23d6a5f9e4bc10",
       "applicantCreditVision": "FICO 680, stable income, low credit utilization",
       "coApplicantCreditVision": "FICO 660, 1 missed payment in 12 months",
-      "macroEconomicFeatures": "Unemployment 3.8%, CPI 3.1%, Fed rate 5.25%",
+      "macroEconomicFeatures": {
+        "unemployment": 3.8,
+        "cpi": 3.1,
+        "fedRate": 5.25
+      },
       "loanPayments": [
           {
               "paymentId": "REF123",

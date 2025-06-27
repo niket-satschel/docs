@@ -635,7 +635,15 @@
           "retailInstallmentContractHash": { "type": "string", "example": "0xa3f1c8b6d42e7e9149d0b8a2fe67c9d5beed0123a1c4e7f89b23d6a5f9e4bc10" },
           "applicantCreditVision": { "type": "string", "example": "FICO 680, stable income, low credit utilization" },
           "coApplicantCreditVision": { "type": "string", "example": "FICO 660, 1 missed payment in 12 months" },
-          "macroEconomicFeatures": { "type": "string", "example": "Unemployment 3.8%, CPI 3.1%, Fed rate 5.25%" },
+          "macroEconomicFeatures": {
+            "type": "object",
+            "properties": {
+              "unemployment": { "type": "number", "example": "3.8" },
+              "cpi": { "type": "number", "example": "3.1" },
+              "fedRate": { "type": "number", "example": "5.25" }
+            },
+            "required": ["unemployment", "cpi", "fedRate"]
+          },
           "details": {
             "type": "object",
             "properties": {

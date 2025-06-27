@@ -56,7 +56,11 @@ The request body should include loan and borrower details in the following forma
   "retailInstallmentContractHash": "0x0987fedc6543210a",
   "applicantCreditVision": "Stable repayment history, no defaults",
   "coApplicantCreditVision": "One delayed payment in last year",
-  "macroEconomicFeatures": "GDP growth: 5%, inflation: 4.2%",
+  "macroEconomicFeatures": {
+    "unemployment": 3.8,
+    "cpi": 3.1,
+    "fedRate": 5.25
+  },
   "details": {
     "name": "Alice Johnson",
     "dob": "1990-05-15",
