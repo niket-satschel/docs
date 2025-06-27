@@ -723,10 +723,12 @@
         "type": "object",
         "properties": {
           "transactionHash": {
-            "type": "string"
+            "type": "string",
+            "example": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
           },
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0x50c6c259c260e46dad03a7b15e308465ad9d42ab26659a4444714c7c4ba5ebcc"
           }
         }
       },
@@ -734,7 +736,8 @@
         "type": "object",
         "properties": {
           "transactionHash": {
-            "type": "string"
+            "type": "string",
+            "example": "0x5a0c0663a48e3abf16c7f0ee632b57da833e44e02a290fc0920ea2858da31f73"
           }
         }
       },
@@ -742,7 +745,8 @@
         "type": "object",
         "properties": {
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0x50c6c259c260e46dad03a7b15e308465ad9d42ab26659a4444714c7c4ba5ebcc"
           }
         },
         "required": [
@@ -753,10 +757,12 @@
         "type": "object",
         "properties": {
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0x50c6c259c260e46dad03a7b15e308465ad9d42ab26659a4444714c7c4ba5ebcc"
           },
           "documentsComplete": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": true
           }
         },
         "required": [
@@ -771,10 +777,12 @@
         "type": "object",
         "properties": {
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0x50c6c259c260e46dad03a7b15e308465ad9d42ab26659a4444714c7c4ba5ebcc"
           },
           "approved": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": true
           }
         },
         "required": [
@@ -789,10 +797,12 @@
         "type": "object",
         "properties": {
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0x50c6c259c260e46dad03a7b15e308465ad9d42ab26659a4444714c7c4ba5ebcc"
           },
           "collateralAmount": {
-            "type": "number"
+            "type": "number",
+            "example": 1500
           }
         },
         "required": [
@@ -955,10 +965,12 @@
         "type": "object",
         "properties": {
           "loanId": {
-            "type": "string"
+            "type": "string",
+            "example": "0x50c6c259c260e46dad03a7b15e308465ad9d42ab26659a4444714c7c4ba5ebcc"
           },
           "refId": {
-            "type": "string"
+            "type": "string",
+            "example": "REF123"
           }
         },
         "required": [
