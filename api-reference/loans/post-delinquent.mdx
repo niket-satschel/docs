@@ -1,0 +1,44 @@
+---
+title: 'Delinquent Loan'
+openapi: 'POST /delinquent'
+---
+
+This endpoint marks a loan as delinquent when a scheduled repayment is missed. A delinquent loan is behind on payments but has not yet reached default. During delinquency, the platform may apply late fees, restrict new drawdowns, and notify the borrower.
+
+**What it does:**
+- Updates the loan status to "delinquent"
+- Records the delinquency event on-chain
+- Captures the outstanding amount and number of delinquent days
+- May trigger late-fee assessment and collections workflows
+
+**When to use it:**
+- After a borrower misses a scheduled repayment
+- While the loan is within the delinquency window before default
+- As part of automated collections or risk monitoring
+
+## Request Body
+
+The request body must include the unique identifier of the loan, the outstanding amount in arrears, and the number of days delinquent:
+
+```json
+{
+  "loanId": "0xc3e531a7f2919b5eb1665daec3f6797b20d0c522fa79b41aaff5c5c0a2453191",
+  "amount": 10000,
+  "days": 90
+}
+```
+
+## Response
+
+- Returns a confirmation of success with the blockchain transaction hash:
+
+```json
+{
+  "transactionHash": "0x652ac7f00ef9292077c46e9c94ab919aa7c301a7baca139f2b3fa15e032c7dfe"
+}
+```
+
+## Notes on Delinquency and Escalation
+
+- "Delinquent" means the borrower is late on one or more payments but the account has not been classified as defaulted.
+- If the number of delinquent days exceeds your configured threshold and the borrower is unable to pay, the loan is typically escalated to default (see `POST /default`). This may initiate recovery actions such as collateral enforcement, account restrictions, and regulatory/reporting procedures as defined by your policy.
