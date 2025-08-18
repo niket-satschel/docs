@@ -13,6 +13,18 @@
       "api-reference/openapi.liquidity.chain.json"
     ]
   },
+  "api": {
+    "baseUrl": [
+      "https://api.stage.satschel.com/v2/chain",
+      "https://api.satschel.com/v2/chain"
+    ],
+    "auth": {
+      "method": "bearer"
+    },
+    "playground": {
+      "mode": "interactive"
+    }
+  },
   "navigation": {
     "tabs": [
       {

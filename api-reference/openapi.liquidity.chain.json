@@ -6,7 +6,12 @@
   },
   "servers": [
     {
-      "url": "https://api.stage.satschel.com/v2/chain"
+      "url": "https://api.stage.satschel.com/v2/chain",
+      "description": "Staging server"
+    },
+    {
+      "url": "https://api.satschel.com/v2/chain",
+      "description": "Production server"
     }
   ],
   "paths": {
