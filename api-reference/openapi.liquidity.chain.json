@@ -343,14 +343,14 @@
         ]
       }
     },
-    "/disburse-loan": {
+    "/fund-loan": {
       "post": {
-        "summary": "disburse-loan",
+        "summary": "fund-loan",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DisburseLoan"
+                "$ref": "#/components/schemas/FundLoan"
               }
             }
           }
@@ -529,14 +529,14 @@
         ]
       }
     },
-    "/notice": {
+    "/payment-reminders": {
       "post": {
-        "summary": "notice",
+        "summary": "payment-reminders",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NoticeLoan"
+                "$ref": "#/components/schemas/PaymentReminder"
               }
             }
           }
@@ -568,6 +568,37 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DelinquentLoan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delinquent-terms": {
+      "post": {
+        "summary": "delinquent-terms",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DelinquentTerms"
               }
             }
           }
@@ -844,7 +875,7 @@
       "InitiateRepayment": {
         "$ref": "#/components/schemas/RequestDocuments"
       },
-      "DisburseLoan": {
+      "FundLoan": {
         "type": "object",
         "properties": {
           "loanId": {
@@ -1021,6 +1052,18 @@
           "loanId": {
             "type": "string",
             "example": "0xc3e531a7f2919b5eb1665daec3f6797b20d0c522fa79b41aaff5c5c0a2453191"
+          }
+        },
+        "required": [
+          "loanId"
+        ]
+      },
+      "DelinquentTerms": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "example": "0xc3e531a7f2919b5eb1665daec3f6797b20d0c522fa79b41aaff5c5c0a2453191"
           },
           "amount": {
             "type": "number",
@@ -1037,7 +1080,7 @@
           "days"
         ]
       },
-      "NoticeLoan": {
+      "PaymentReminder": {
         "$ref": "#/components/schemas/RequestDocuments"
       }
     }

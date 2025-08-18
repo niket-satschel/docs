@@ -1,14 +1,14 @@
 ---
 title: 'Payment Reminder'
-openapi: 'POST /notice'
+openapi: 'POST /payment-reminders'
 ---
 
-This endpoint sends a formal notice associated with a specific loan. It is typically used to notify the borrower or related parties about important loan events, such as upcoming due dates, payment reminders, default warnings, or other critical updates.
+This endpoint sends a payment reminder associated with a specific loan. It is typically used to notify the borrower or related parties about important loan events, such as upcoming due dates, payment reminders, default warnings, or other critical updates.
 
 **What it does:**
-- Triggers a notice related to the loan lifecycle
+- Triggers a payment reminder related to the loan lifecycle
 - Communicates borrower obligations or system-triggered events
-- Records a reference to the notice on-chain for audit purposes
+- Records a reference to the payment reminder on-chain for audit purposes
 
 **When to use it:**
 - Before an installment due date to remind the borrower
@@ -17,7 +17,7 @@ This endpoint sends a formal notice associated with a specific loan. It is typic
 
 ## Request Body
 
-The request body must include the loan identifier for which the notice is being issued:
+The request body must include the loan identifier for which the payment reminder is being issued:
 
 ```json
 {

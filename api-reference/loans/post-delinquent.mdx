@@ -8,23 +8,30 @@ This endpoint marks a loan as delinquent when a scheduled repayment is missed. A
 **What it does:**
 - Updates the loan status to "delinquent"
 - Records the delinquency event on-chain
-- Captures the outstanding amount and number of delinquent days
-- May trigger late-fee assessment and collections workflows
+- Triggers delinquency-related workflows and notifications
+- May initiate late-fee assessment and collections processes
 
 **When to use it:**
-- After a borrower misses a scheduled repayment
-- While the loan is within the delinquency window before default
-- As part of automated collections or risk monitoring
+- When a borrower misses a scheduled repayment and the grace period has expired
+- To formally transition a loan from "current" or "funded" status to "delinquent"
+- As part of automated payment monitoring systems when payments are overdue
+- Before escalating to more severe collection actions or default proceedings
+- When implementing risk management protocols for overdue accounts
+
+**Prerequisites:**
+- The loan must be "funded" or "current" (active repayment)
+- The loan cannot be in "pending", "underwriting", "approved", or "closed" status
+- Sufficient payment history must exist to determine delinquency
+- The borrower must have missed at least one scheduled payment
+- Any applicable grace periods must have expired
 
 ## Request Body
 
-The request body must include the unique identifier of the loan, the outstanding amount in arrears, and the number of days delinquent:
+The request body must include the unique identifier of the loan to be marked as delinquent:
 
 ```json
 {
-  "loanId": "0xc3e531a7f2919b5eb1665daec3f6797b20d0c522fa79b41aaff5c5c0a2453191",
-  "amount": 10000,
-  "days": 90
+  "loanId": "0xbb7b779aaa59a095004ed8ce1ae0ceb9b15ce62375fb591eb2b9b435744f446f"
 }
 ```
 

@@ -36,14 +36,15 @@
               "api-reference/loans/post-complete-underwriting",
               "api-reference/loans/post-request-collateral",
               "api-reference/loans/post-approve-collateral",
-              "api-reference/loans/post-disburse-loan",
+              "api-reference/loans/post-fund-loan",
               "api-reference/loans/post-initiate-payment",
               "api-reference/loans/post-loan-payment",
               "api-reference/loans/post-acknowledge-payment",
               "api-reference/loans/post-close",
               "api-reference/loans/post-default",
+              "api-reference/loans/post-delinquent-terms",
               "api-reference/loans/post-delinquent",
-              "api-reference/loans/post-notice"
+              "api-reference/loans/post-payment-reminder"
             ]
           }
 
@@ -70,9 +71,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/LiquidityIO",
+      "github": "https://github.com/satschel",
+      "linkedin": "https://www.linkedin.com/company/liquidity-io"
     }
   }
 }

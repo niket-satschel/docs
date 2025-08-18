@@ -1,14 +1,14 @@
 ---
 title: 'Loan Funded'
-openapi: 'POST /disburse-loan'
+openapi: 'POST /fund-loan'
 ---
 
-This endpoint disburses the approved loan amount to the borrower. It is typically invoked after the loan has successfully completed underwriting and the borrower has transferred the required collateral. The disbursement transaction is recorded on-chain for transparency and auditability.
+This endpoint funds the approved loan amount to the borrower. It is typically invoked after the loan has successfully completed underwriting and the borrower has transferred the required collateral. The funding transaction is recorded on-chain for transparency and auditability.
 
 **What it does:**
 - Transfers the approved loan amount to the borrower
 - Marks the start of the loan repayment cycle
-- Records the disbursement event on-chain
+- Records the funding event on-chain
 
 **When to use it:**
 - After underwriting and collateral transfer are completed
@@ -17,7 +17,7 @@ This endpoint disburses the approved loan amount to the borrower. It is typicall
 
 ## Request Body
 
-The request body must include the unique identifier of the loan to be disbursed:
+The request body must include the unique identifier of the loan to be funded:
 
 ```json
 {
