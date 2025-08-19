@@ -772,6 +772,32 @@
                 }
               }
             }
+          },
+          "loanInfo": {
+            "oneOf": [
+              {
+                "type": "object",
+                "description": "AutoLoan details",
+                "properties": {
+                  "make": { "type": "string", "example": "Toyota" },
+                  "model": { "type": "string", "example": "Corolla" },
+                  "year": { "type": "number", "example": 2020 },
+                  "age": { "type": "number", "example": 3 },
+                  "mileage": { "type": "number", "example": 45000 },
+                  "vin": { "type": "string", "example": "1HGCM82633A004352" }
+                },
+                "required": ["make", "model", "year", "age", "mileage", "vin"]
+              },
+              {
+                "type": "object",
+                "description": "Default loan details for non-AutoLoan",
+                "properties": {
+                  "attribute1": { "type": "string" },
+                  "attribute2": { "type": "string" },
+                  "attribute3": { "type": "string" }
+                }
+              }
+            ]
           }
         },
         "required": [
