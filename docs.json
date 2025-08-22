@@ -54,7 +54,6 @@
               "api-reference/loans/post-acknowledge-payment",
               "api-reference/loans/post-close",
               "api-reference/loans/post-default",
-              "api-reference/loans/post-delinquent-terms",
               "api-reference/loans/post-delinquent",
               "api-reference/loans/post-payment-reminder"
             ]

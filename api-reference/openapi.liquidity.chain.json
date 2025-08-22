@@ -595,37 +595,6 @@
           }
         ]
       }
-    },
-    "/delinquent-terms": {
-      "post": {
-        "summary": "delinquent-terms",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DelinquentTerms"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
     }
   },
   "components": {
@@ -675,6 +644,8 @@
           },
           "interestRate": { "type": "number", "example": "5.75" },
           "term": { "type": "number", "example": "12" },
+          "delinquentAmount": { "type": "number", "example": "15000" },
+          "delinquentDays": { "type": "number", "example": "90" },
           "paymentFrequency": {
             "type": "string",
             "example": "Monthly" ,
@@ -1087,28 +1058,6 @@
         },
         "required": [
           "loanId"
-        ]
-      },
-      "DelinquentTerms": {
-        "type": "object",
-        "properties": {
-          "loanId": {
-            "type": "string",
-            "example": "0xc3e531a7f2919b5eb1665daec3f6797b20d0c522fa79b41aaff5c5c0a2453191"
-          },
-          "amount": {
-            "type": "number",
-            "example": 10000
-          },
-          "days": {
-            "type": "number",
-            "example": 90
-          }
-        },
-        "required": [
-          "loanId",
-          "amount",
-          "days"
         ]
       },
       "PaymentReminder": {
